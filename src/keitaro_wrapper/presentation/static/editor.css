@@ -1,0 +1,48 @@
+
+nav a { color: inherit; }
+.toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:20px; }
+.toolbar input:not([type=checkbox]) { flex:1; min-width:180px; margin:0; }
+.toolbar button { width:auto; margin:0; }
+.check { display:flex; gap:8px; align-items:center; margin:0; }
+.check input { width:auto; }
+.stream { margin-top:24px; border:1px solid #dce4ed; transition:background .2s; }
+.stream.dirty { background:#fff9d9; border-color:#dfbd53; }
+.stream h2 { margin-bottom:8px; }
+.stream-status { font-size:14px; margin:8px 0 20px; }
+.offers-table { width:100%; border-collapse:collapse; margin:16px 0; }
+.offers-table td, .offers-table th { text-align:left; padding:14px 8px; border-bottom:1px solid #dce4ed; }
+.offers-table .removed { color:#929ba7; background:#edf0f3; }
+.share-input { width:82px; display:inline-block; margin:0; padding:8px; }
+.offers-table button { width:auto; padding:8px 12px; margin:3px; }
+.pin[aria-pressed=true] { background:#264b78; color:white; }
+.muted { color:#64748b; }
+.stream pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; }
+.campaign-row { display:flex; justify-content:space-between; gap:16px; padding:18px 0; border-bottom:1px solid #dce4ed; }
+.campaign-row a { color:#2262a7; overflow-wrap:anywhere; }
+#editor-message { padding:14px 18px; background:#edf4fc; border-radius:8px; position:sticky; top:8px; z-index:2; }
+#editor-message.error { background:#ffeded; color:#932f2f; }
+dialog { border:1px solid #dce4ed; border-radius:14px; width:min(650px,90vw); max-height:80vh; padding:24px; }
+dialog::backdrop { background:#17283b88; }
+#offer-results { max-height:45vh; overflow:auto; margin-bottom:16px; }
+.offer-result { display:flex; gap:12px; justify-content:space-between; align-items:center; border-bottom:1px solid #dce4ed; padding:12px 0; }
+.offer-result button { width:auto; }
+button:disabled { opacity:.5; cursor:wait; }
+@media(max-width:600px) {
+  .offers-table td, .offers-table th { padding:10px 3px; }
+  .share-input { width:60px; }
+  .offers-table button { padding:7px; }
+  .panel { padding:16px; }
+}
+
+.pin svg { width:16px; height:16px; vertical-align:middle; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; transform:rotate(30deg); }
+.stream-target { overflow-wrap:anywhere; }
+@media(max-width:600px) {
+  .offers-table { min-width:0; table-layout:fixed; }
+  .offers-table th:first-child { width:42%; }
+  .offers-table th:nth-child(2) { width:33%; }
+  .offers-table th:nth-child(3) { width:25%; }
+  .offers-table td { overflow-wrap:anywhere; }
+  .offers-table button { font-size:11px; padding:7px 5px; }
+  .share-input { width:52px; height:36px; font-size:12px; }
+  .offers-table .pin { display:inline-flex; padding:7px; }
+}

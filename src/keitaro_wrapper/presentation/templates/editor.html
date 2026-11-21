@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Keitaro · Редактор кампаний</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/editor.css">
+  <script src="/static/editor.js" defer></script>
+</head>
+<body data-campaign-id="{{ campaign_id or '' }}">
+<main>
+  <header><span class="badge">KEITARO WRAPPER</span><nav>
+    <a href="/">Создать кампанию</a> · <a href="/campaigns">Кампании</a>
+  </nav></header>
+  <section class="intro">
+    <p class="eyebrow">УПРАВЛЕНИЕ ОФФЕРАМИ</p>
+    <h1 id="page-title">Кампании</h1>
+    <p id="page-description">Выберите кампанию, чтобы настроить офферы в её потоках.</p>
+  </section>
+  <p id="editor-message" role="status" aria-live="polite" hidden></p>
+  {% if not campaign_id %}
+  <section class="panel">
+    <form id="campaign-search" class="toolbar">
+      <input id="campaign-query" aria-label="Название или ID кампании" placeholder="Название или ID кампании">
+      <label class="check"><input type="checkbox" id="all-campaigns"> Все кампании</label>
+      <button type="submit">Найти</button>
+    </form>
+    <p class="muted" id="filter-note">По умолчанию показаны test_frolov_*.</p>
+    <div id="campaign-list"></div>
+  </section>
+  {% else %}
+  <section class="toolbar">
+    <button id="fetch-streams" class="secondary">Обновить из Keitaro</button>
+    <button id="reload-drafts" class="secondary">Перечитать черновики</button>
+  </section>
+  <div id="stream-list"></div>
+  {% endif %}
+  <dialog id="offer-dialog">
+    <form id="offer-search" class="toolbar">
+      <input id="offer-query" aria-label="ID или название оффера" placeholder="ID или название оффера" required>
+      <button type="submit">Найти</button>
+    </form>
+    <p id="offer-error" role="alert"></p>
+    <div id="offer-results"></div>
+    <button id="close-dialog" class="secondary" type="button">Закрыть</button>
+  </dialog>
+</main>
+</body>
+</html>
+

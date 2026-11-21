@@ -1,0 +1,31 @@
+[build-system]
+requires = ['hatchling']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'keitaro-wrapper'
+version = '0.1.0'
+description = 'Создание кампаний Keitaro с географическим фильтром'
+requires-python = '>=3.12'
+dependencies = [
+  'fastapi>=0.115,<1', 'uvicorn[standard]>=0.30,<1',
+  'sqlalchemy>=2.0,<3', 'alembic>=1.13,<2', 'httpx>=0.27,<1',
+  'pydantic-settings>=2.6,<3', 'jinja2>=3.1,<4', 'pycountry>=24.6,<27',
+]
+
+[dependency-groups]
+dev = ['pytest>=8,<10', 'ruff>=0.9,<1']
+
+[tool.ruff]
+line-length = 88
+target-version = 'py312'
+
+[tool.ruff.format]
+quote-style = 'single'
+
+[tool.ruff.lint]
+select = ['E', 'F', 'I', 'UP', 'B']
+
+[tool.pytest.ini_options]
+pythonpath = ['src']
+testpaths = ['tests']

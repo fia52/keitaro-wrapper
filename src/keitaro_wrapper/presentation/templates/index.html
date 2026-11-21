@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Keitaro · Создание кампаний</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header><a href="/campaigns">Кампании и редактор офферов →</a>
+        <span class="badge">KEITARO WRAPPER</span
+        ><span class="tag">Тестовое окружение</span>
+      </header>
+      <section class="intro">
+        <p class="eyebrow">УПРАВЛЕНИЕ ТРАФИКОМ</p>
+        <h1>Новая кампания</h1>
+        <p>
+          Два потока, один запуск. Выберите страну и оффер — остальные настройки
+          уже заданы.
+        </p>
+      </section>
+      <div class="layout">
+        <section class="panel">
+          <h2>Параметры кампании</h2>
+          <form id="campaign-form">
+            <label for="name">Название</label>
+            <div class="name-field">
+              <span>test_frolov_</span
+              ><input
+                id="name"
+                name="name"
+                placeholder="campaign1"
+                maxlength="116"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <label for="country">Код страны</label>
+            <input
+              id="country"
+              name="country"
+              placeholder="Например, DE"
+              minlength="2"
+              maxlength="2"
+              pattern="[A-Za-z]{2}"
+              required
+              autocomplete="off"
+            />
+            <small>Пользователи из этой страны попадут в Google.</small>
+            <label for="offer">Оффер Keitaro</label>
+            <select id="offer" name="offer" required disabled>
+              <option value="">Загрузка офферов…</option>
+            </select>
+            <div id="catalog-error" role="alert" hidden></div>
+            <button type="button" id="reload" class="secondary" hidden>
+              Повторить загрузку
+            </button>
+            <button id="submit" type="submit" disabled>
+              Создать кампанию <span>↗</span>
+            </button>
+          </form>
+          <div id="result" role="status" aria-live="polite" hidden></div>
+          <button type="button" id="retry" class="secondary" hidden>
+            Проверить результат запроса
+          </button>
+        </section>
+        <aside>
+          <section class="panel">
+            <h2>Как пойдёт трафик</h2>
+            <div class="flow">
+              <span class="step">01</span>
+              <div>
+                <strong>Выбранная страна</strong>
+                <p>Фильтр по стране → Google</p>
+              </div>
+            </div>
+            <div class="flow">
+              <span class="step">02</span>
+              <div>
+                <strong>Остальные пользователи</strong>
+                <p>Поток по умолчанию → оффер</p>
+              </div>
+            </div>
+          </section>
+          <section class="settings">
+            <p>Домен <strong id="domain">—</strong></p>
+            <p>Группа <strong id="group">FORTESTS</strong></p>
+            <p>Источник <strong>Не задан</strong></p>
+          </section>
+        </aside>
+      </div>
+      <section class="history">
+        <div class="history-title">
+          <h2>Последние операции</h2>
+          <button id="refresh" type="button" class="secondary">Обновить</button>
+        </div>
+        <p id="history-error" role="alert" hidden></p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Кампания</th>
+                <th>Страна / оффер</th>
+                <th>Статус</th>
+                <th>Keitaro ID</th>
+              </tr>
+            </thead>
+            <tbody id="history"></tbody>
+          </table>
+        </div>
+      </section>
+      <footer>
+        Кампания включается после успешной настройки обоих потоков.
+      </footer>
+    </main>
+  </body>
+</html>
+
